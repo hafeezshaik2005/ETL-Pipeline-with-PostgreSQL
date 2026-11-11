@@ -1,0 +1,30 @@
+import pandas as pd
+import requests
+
+BASE_URl="https://fakestoreapi.com"
+
+def extract_product():
+
+    url=f"{BASE_URl}/products"
+
+    response=requests.get(url)
+    response.raise_for_status()
+
+    data=response.json()
+
+    product_df=pd.DataFrame(data)
+
+    return product_df
+
+def extract_user():
+
+    url=f"{BASE_URl}/users"
+
+    response=requests.get(url)
+    response.raise_for_status()
+
+    data=response.json()
+
+    user_df=pd.DataFrame(data)
+
+    return user_df
